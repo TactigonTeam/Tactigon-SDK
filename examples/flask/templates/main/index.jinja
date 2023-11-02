@@ -1,0 +1,62 @@
+{% extends "base.jinja" %}
+
+{% block body %}
+<div class="d-flex flex-column flex-fill scrollarea">
+    <h5>TSKIN DATA</h5>
+    <div>
+        <p id="cont"></p>
+    </div>
+    <div class="d-flex flex-row">
+        <div class="d-flex flex-column justify-content-around">
+            <button type="button" class="btn btn-primary m-3" id="play">Play</button>
+            <button type="button" class="btn btn-primary m-3" id="record">Record</button>
+            <button type="button" class="btn btn-primary m-3" id="listen">Listen</button>
+        </div>
+        <div class="d-flex">
+            <p id="tskindata"></p>
+        </div>
+    </div>
+    
+    
+</div>
+{% endblock %}
+
+
+{% block script %}
+<script>
+    socket.on('config', function(data) {
+        if (data.tskin_right){
+            setInterval(() => {
+                socket.emit('tskin_state', {hand: 'right'});
+            }, 100)
+        }
+
+        if (data.tskin_left){
+            setInterval(() => {
+                socket.emit('tskin_state', {hand: 'left'});
+            }, 100)
+        }
+    });
+
+    socket.on("right_tskin_state", function(data){
+        $("#cont").html(JSON.stringify(data))
+        if (data.gesture){
+            $("#tskindata").html(JSON.stringify(data.gesture))
+        }
+        if (data.transcription){
+            $("#tskindata").html(JSON.stringify(data.transcription))
+        }
+    })
+    $(function(){
+        $("#play").click(function(){
+            socket.emit("play", {hand: 'right', filename: "test_socket.wav"})
+        });
+        $("#record").click(function(){
+            socket.emit("record", {hand: 'right', filename: "test_socket.wav"})
+        });
+        $("#listen").click(function(){
+            socket.emit("listen", {hand: 'right'})
+        });
+    })
+</script>
+{% endblock %}

@@ -1,0 +1,308 @@
+{% macro tskin_panel(hand, tskin) %}
+    <div class="d-flex flex-row gap-3">
+        <div class="{% if connected %}bg-primary text-light{% endif %} rounded-2 align-self-center">
+            <div class="d-flex gap-3 py-3 px-2">
+                <div class="d-flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="bi bi-tskin align-self-center {% if connected %}text-light{% endif %}" viewBox="0 0 40 40">
+                        <path fill="{% if connected %}#fff{% endif %}" fill-rule="evenodd" clip-rule="evenodd" d="M0.765806 12.4697C5.3185 11.1389 14.901 9 24.3289 9C37.159 9 40 12.4225 40 20.7885C40 28.6791 40 30.9608 34.6414 30.9608H6.91656C1.96779 30.9608 -1.1481 19.6477 12.6901 19.6477H32.027C36.5175 19.6477 36.6092 13.3731 32.4852 12.2323C28.4499 11.116 16.0789 10.5459 1.38217 14.6189C0.833908 14.7709 0.260099 14.4671 0.0661623 13.9138C-0.145839 13.309 0.168707 12.6443 0.765806 12.4697ZM38.1239 25.732L4.94877 25.732V26.3024C4.94877 27.8776 6.17968 29.1545 7.69809 29.1545L35.3745 29.1545C36.8929 29.1545 38.1239 27.8776 38.1239 26.3024V25.732Z" fill="#121212"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h6 class="mb-0 text-uppercase">{{ tskin.config.name }}</h6>
+                    <p class="mb-0 opacity-75">{{ tskin.config.address }}</p>
+                </div>
+                <div class="d-flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi bi-bluetooth align-self-center" viewBox="0 0 16 16">
+                        <path fill="{% if tskin.connected %}#0d6efd{% endif %}" fill-rule="evenodd" d="m8.543 3.948 1.316 1.316L8.543 6.58V3.948Zm0 8.104 1.316-1.316L8.543 9.42v2.632Zm-1.41-4.043L4.275 5.133l.827-.827L7.377 6.58V1.128l4.137 4.136L8.787 8.01l2.745 2.745-4.136 4.137V9.42l-2.294 2.274-.827-.827L7.133 8.01ZM7.903 16c3.498 0 5.904-1.655 5.904-8.01 0-6.335-2.406-7.99-5.903-7.99C4.407 0 2 1.655 2 8.01 2 14.344 4.407 16 7.904 16Z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-link text-light" {% if not connected %} disabled {% endif %}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+           
+        </div>
+        <div class="align-self-center">
+            {% if hand == 'right' %}
+                <svg version="1.1" name="svg-hands" id="right-hand-svg" height="45" viewBox="0 0 106.38618 141.13435" xmlns="http://www.w3.org/2000/svg">
+                    </defs>
+                    <path
+                        style="fill:none;stroke:#494949;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+                        d="m 48.048205,137.79003 c -0.045,-16.28019 -9.84908,-24.3886 -21.62993,-37.28802 -2.96017,-3.241235 -3.52495,-6.684535 -6.14898,-10.200545 -3.10147,-4.15572 -7.64263,-9.23847 -10.09495,-13.80809 -1.8833328,-3.50949 -4.9641468,-4.10255 -7.2868428,-7.14276 l 0.465565,-0.93115 c 2.146425,-3.91082 5.748028,-4.03084 9.5517278,-2.67276 7.08296,2.52947 10.66578,5.61038 16.52042,13.80325 2.01356,2.81735 8.6857,3.92751 10.80524,1.7784 4.08657,-4.1437 3.61085,-10.66342 4.05329,-16.1679 1.22316,-15.21823 -2.8357,-30.3342 -0.35169,-45.62628 1.2332,-7.59232 6.21884,-11.0330399 10.09356,-6.4888 2.21921,2.60291 0.81717,8.72248 1.0481,12.07569 0.24442,3.55457 0.65227,7.18018 1.15881,10.70821 0.87855,6.11751 0.8365,17.94927 3.21326,18.84524 2.06976,-0.60448 0.95735,-9.01273 1.21482,-12.79278 0.62387,-9.16827 1.86416,-18.30726 2.71663,-27.46887 0.30913,-3.32141 0.88551,-8.3623899 3.8084,-10.3626199 4.43924,-3.03833 7.24285,0.5542 7.39331,6.6380199 0.2137,8.59776 0.004,17.45689 0.007,26.07216 0.001,3.85942 -1.59599,17.01135 -0.44607,17.60192 1.08764,-0.23102 2.25342,-12.97374 2.70177,-16.67077 0.83943,-6.92379 1.35901,-14.62611 2.55321,-21.41642 0.55264,-3.14201 3.05231,-6.00712 6.34484,-4.38738 3.92107,1.92906 3.85729,8.982 3.41174,12.76771 -0.98144,8.34776 -0.67788,16.78563 -1.86882,25.14101 -0.5559,3.90059 -1.66877,10.5775 -0.59175,11.17379 1.22072,-0.14551 2.63702,-8.5512 4.32193,-12.5705 1.71471,-4.09087 2.35814,-8.78343 3.96902,-13.03609 0.94279,-2.48984 2.37815,-7.59402 6.091585,-5.57217 2.4964,1.35933 2.53597,4.99594 2.24546,7.43447 -0.8087,6.78077 -2.45544,13.40854 -4.116615,20.0197 -3.02018,12.02344 -3.04951,24.52226 -5.25959,36.78036 -2.73013,15.141875 -7.71736,28.576485 -7.71736,44.229555"
+                        id="right-outline"/>
+                </svg>
+            {% else %}
+                <svg version="1.1" name="svg-hands" id="left-hand-svg" height="45" viewBox="0 0 106.38618 141.13435" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        style="fill:none;stroke:#494949;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+                        d="m 55.894294,135.33972 c 0.045,-16.28019 9.84908,-24.3886 21.62993,-37.28802 2.96017,-3.241235 3.52495,-6.684535 6.14898,-10.200545 3.10147,-4.15572 7.64263,-9.23847 10.09495,-13.80809 1.883333,-3.50949 4.964145,-4.10255 7.286846,-7.14276 l -0.46557,-0.93115 c -2.146421,-3.91082 -5.748026,-4.03084 -9.551726,-2.67276 -7.08296,2.52947 -10.66578,5.61038 -16.52042,13.80325 -2.01356,2.81735 -8.6857,3.92751 -10.80524,1.7784 -4.08657,-4.1437 -3.61085,-10.66342 -4.05329,-16.1679 -1.22316,-15.21823 2.8357,-30.3342 0.35169,-45.62628 -1.2332,-7.5923201 -6.21884,-11.03304 -10.09356,-6.4888 -2.21921,2.60291 -0.81717,8.72248 -1.0481,12.07569 -0.24442,3.55457 -0.65227,7.18018 -1.15881,10.70821 -0.87855,6.11751 -0.8365,17.94927 -3.21326,18.84524 -2.06976,-0.60448 -0.95735,-9.01273 -1.21482,-12.79278 -0.62387,-9.16827 -1.86416,-18.30726 -2.71663,-27.46887 -0.30913,-3.3214101 -0.88551,-8.36239 -3.8084,-10.36262 -4.43924,-3.03833 -7.24285,0.5542 -7.39331,6.6380199 -0.2137,8.5977601 -0.004,17.4568901 -0.007,26.0721601 -10e-4,3.85942 1.59599,17.01135 0.44607,17.60192 -1.08764,-0.23102 -2.25342,-12.97374 -2.70177,-16.67077 -0.83943,-6.92379 -1.35901,-14.62611 -2.55321,-21.41642 -0.55264,-3.14201 -3.05231,-6.0071201 -6.34484,-4.3873801 -3.92107,1.9290601 -3.85729,8.9820001 -3.41174,12.7677101 0.98144,8.34776 0.67788,16.78563 1.86882,25.14101 0.5559,3.90059 1.66877,10.5775 0.59175,11.17379 -1.22072,-0.14551 -2.63702,-8.5512 -4.32193,-12.5705 -1.71471,-4.09087 -2.35814,-8.78343 -3.9690197,-13.03609 -0.94279,-2.48984 -2.3781498,-7.59402 -6.0915848,-5.57217 -2.49639996,1.35933 -2.53596996,4.99594 -2.24545996,7.43447 0.80869996,6.78077 2.45543996,13.40854 4.11661496,20.0197 3.0201798,12.02344 3.0495098,24.52226 5.2595898,36.78036 2.7301297,15.141875 7.7173597,28.576485 7.7173597,44.229555"
+                        id="left-outline"/>
+                </svg>
+            {% endif %}
+        </div>
+        <!--
+        <div class="btn-group-vertical">
+            <button type="button" class="btn {% if hand == 'left' %} btn-primary {% else %} btn-outline-primary {% endif %}" {% if not connected %} disabled {% endif %}>
+                <img src="{{ url_for('static', filename='images/left_stroke.png') }}" alt="twbs" width="24" height="24">
+            </button>
+            <button type="button" class="btn {% if hand == 'right' %} btn-primary {% else %} btn-outline-primary {% endif %}" {% if not connected %} disabled {% endif %}>
+                <img src="{{ url_for('static', filename='images/right_stroke.png') }}" alt="twbs" width="24" height="24">
+            </button>
+        </div>
+        -->
+    </div>
+{% endmacro %}
+
+{% macro side_panel_right() %}
+    <div class="offcanvas offcanvas-end" id="panel_device_connection" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Device connection</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <hr>
+            <div class="d-flex flex-column gap-3">
+                {% if tskin_right %}
+                    {{ tskin_panel("right", tskin_right) }}
+                {% endif %}
+
+                {% if tskin_left %}
+                    {{ tskin_panel("left", tskin_left) }}
+                {% endif %}
+                <a href="#" class="btn btn-outline-primary gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                        class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"></path>
+                        <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"></path>
+                    </svg>
+                    Edit
+                </a>
+                <!--
+                <button type="button" class="btn btn-outline-secondary gap-3 d-flex align-items-center" style="width: 160px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                        class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"></path>
+                        <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"></path>
+                    </svg>
+                    Search new
+                </button>
+                -->
+            </div>
+            
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro popup_message(messages) %}
+    <div class="toast-container end-0 p-3">
+        {% for category, message in messages %}
+            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header bg-primary bg-{{ category }} bg-opacity-50">
+                    <strong class="me-auto">
+                        {% if category == 'success' %}
+                            Success
+                        {% elif category == 'warning' %}
+                            Warning
+                        {% elif category == 'danger' %}
+                            Error
+                        {% else %}
+                            Info
+                        {% endif %}
+                    </strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endmacro %}
+
+{% macro tskin(hand, tskin) %}
+    <div>
+        <img src="{{ url_for('static', filename='images/tactigon.png') }}" alt="twbs" width="20" height="20">
+        <small>{{ tskin.config.name }}</small>
+    </div>
+    <div>
+        <img src="{{ url_for('static', filename='images/right.png') }}" alt="twbs" width="20" height="20">
+        <small>{{ hand }} hand</small>
+    </div>
+    <div class="tskin-{{hand}}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-broadcast connected" viewBox="0 0 16 16">
+            <path fill="#fff" d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-broadcast disconnected" viewBox="0 0 16 16">
+            <path fill="gray" d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
+        </svg>
+    </div>
+    <!-- <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-broadcast" viewBox="0 0 16 16">
+            <path d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
+        </svg>
+        <small>-58 dBm</small>
+    </div>
+    <div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-battery-full" viewBox="0 0 16 16">
+            <path d="M2 6h10v4H2V6z" />
+            <path d="M2 4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H2zm10 1a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h10zm4 3a1.5 1.5 0 0 1-1.5 1.5v-3A1.5 1.5 0 0 1 16 8z" />
+        </svg>
+        <small>100%</small>
+    </div> -->
+
+{% endmacro %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TGear App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- <link href="{{ url_for('static', filename='css/struct_no.css') }}" rel="stylesheet"> -->
+    <link href="{{ url_for('static', filename='css/tskin.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    {% block style %}
+    {% endblock %}
+</head>
+<body>
+    <nav class="bg-dark text-light py-2">
+        <div class="container-fluid d-flex justify-content-between">
+            <a href="{{ url_for('main.disconnect') }}" class="tskin">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                    <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                </svg>
+            </a>
+            <div class="d-flex gap-3">
+                {% if tskin_right %}
+                    {{tskin("right", tskin_right)}}
+                {% endif %}
+                {% if tskin_left %}
+                    {{tskin("left", tskin_left)}}
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar bg-tskin">
+        <div class="container-fluid">
+            <a href="{{ url_for('main.index') }}" class="navbar-brand align-items-center text-light" title="Homepage">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                </svg>
+                User
+            </a>
+            <div>
+                <!-- <a href="#" class="btn btn-link text-decoration-none text-light" title="Settings">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+                        <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+                    </svg>
+                </a> -->
+                {#
+                <a href="{{ url_for('tutorial.index') }}" class="btn btn-link text-decoration-none text-light" title="Tutorial">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-collection-play" viewBox="0 0 16 16">
+                        <path d="M2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3zm2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1zm2.765 5.576A.5.5 0 0 0 6 7v5a.5.5 0 0 0 .765.424l4-2.5a.5.5 0 0 0 0-.848l-4-2.5z"/>
+                        <path d="M1.5 14.5A1.5 1.5 0 0 1 0 13V6a1.5 1.5 0 0 1 1.5-1.5h13A1.5 1.5 0 0 1 16 6v7a1.5 1.5 0 0 1-1.5 1.5h-13zm13-1a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-.5-.5h-13A.5.5 0 0 0 1 6v7a.5.5 0 0 0 .5.5h13z"/>
+                    </svg>
+                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+                        <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+                    </svg> -->
+                </a>
+                 <a href="{{ url_for('plugin.index') }}" class="btn btn-link text-decoration-none text-light" title="Plugin">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plugin" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 1 2.898 5.673c-.167-.121-.216-.406-.002-.62l1.8-1.8a3.5 3.5 0 0 0 4.572-.328l1.414-1.415a.5.5 0 0 0 0-.707l-.707-.707 1.559-1.563a.5.5 0 1 0-.708-.706l-1.559 1.562-1.414-1.414 1.56-1.562a.5.5 0 1 0-.707-.706l-1.56 1.56-.707-.706a.5.5 0 0 0-.707 0L5.318 5.975a3.5 3.5 0 0 0-.328 4.571l-1.8 1.8c-.58.58-.62 1.6.121 2.137A8 8 0 1 0 0 8a.5.5 0 0 0 1 0Z"/>
+                    </svg>
+                </a> #}
+                
+                <button class="btn btn-link text-decoration-none text-light" title="Device status" data-bs-toggle="offcanvas" data-bs-target="#panel_device_connection" aria-controls="offcanvasScrolling">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bluetooth" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="m8.543 3.948 1.316 1.316L8.543 6.58V3.948Zm0 8.104 1.316-1.316L8.543 9.42v2.632Zm-1.41-4.043L4.275 5.133l.827-.827L7.377 6.58V1.128l4.137 4.136L8.787 8.01l2.745 2.745-4.136 4.137V9.42l-2.294 2.274-.827-.827L7.133 8.01ZM7.903 16c3.498 0 5.904-1.655 5.904-8.01 0-6.335-2.406-7.99-5.903-7.99C4.407 0 2 1.655 2 8.01 2 14.344 4.407 16 7.904 16Z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+    {{ side_panel_right() }}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {{ popup_message(messages) }}
+    {% endwith %}
+
+    <main class="d-flex flex-nowrap">
+        {% block body %}{% endblock %}
+    </main>
+    
+    <!-- <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <span class="mb-3 mb-md-0 text-muted">Version 1.0</span>
+        </footer>
+    </div> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+    <script>
+        const toastElList = document.querySelectorAll('.toast');
+        const toast_option = {
+            animation: true,
+            autohide: true,
+            delay: 3000
+        }
+        const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl, toast_option))
+        toastList.forEach(toast => {
+            toast.show()
+        });
+
+        $(".tskin-right").find(".connected").hide();
+        $(".tskin-left").find(".connected").hide();
+
+        var socket = io();
+        socket.on('config', function(data) {
+            if (data.tskin_right){
+                setInterval(() => {
+                    socket.emit('tskin_connection', {hand: 'right'});
+                }, 1000)
+            }
+
+            if (data.tskin_left){
+                setInterval(() => {
+                    socket.emit('tskin_connection', {hand: 'left'});
+                }, 1000)
+            }
+        });
+
+        socket.on("right_tskin_conn", function(data) {
+            if (data.connected){
+                $(".tskin-right").find(".connected").show();
+                $(".tskin-right").find(".disconnected").hide();
+            } else {
+                $(".tskin-right").find(".connected").hide();
+                $(".tskin-right").find(".disconnected").show();
+            }
+        })
+
+        socket.on("left_tskin_conn", function(data) {
+            if (data.connected){
+                $(".tskin-left").find(".connected").show();
+                $(".tskin-left").find(".disconnected").hide();
+            } else {
+                $(".tskin-left").find(".connected").hide();
+                $(".tskin-left").find(".disconnected").show();
+            }
+        })
+
+        // socket.on("left_sensor_state", (data) => {
+        //     console.log(data.angle.roll,data.angle.pitch,data.angle.yaw)
+        // })
+    </script>
+    {% block script %}{% endblock %}
+</body>
+</html>
