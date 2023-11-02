@@ -1,0 +1,4 @@
+tgear-sdk>=4.1.0
+tactigon-speech>=4.1.0
+flask==3.0.0
+Flask-SocketIO==5.3.6
