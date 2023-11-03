@@ -1,6 +1,7 @@
 # Tactigon OS
 
 This repository contains the Tactigon OS interface for using Tactigon Gear SDK.
+It is compatible with Tactigon Gear v. >=4.1.3.
 
 ## CLI
 The Command Line Interface (CLI) is a simple interface that allow the user to collect, label and upload motion data. The server then generates a gesture model
