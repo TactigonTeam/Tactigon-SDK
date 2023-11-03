@@ -1,0 +1,15 @@
+{
+  "RAW_DATA_PATH": "data/raw/",
+  "GESTURE_NAME": [
+    "up",
+    "down",
+    "swipe_r",
+    "swipe_l",
+    "twist",
+    "push",
+    "pull",
+    "circle"
+  ],
+  "SESSION_INFO": "NEW_MODEL",
+  "HAND": "RIGHT"
+}

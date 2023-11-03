@@ -1,0 +1,22 @@
+{
+  "SERVER_URL": "https://tgear.eu.pythonanywhere.com",
+  "TRAINING_SESSIONS": [
+    "NEW_MODEL"
+  ],
+  "MODEL_SESSIONS": [
+    "NEW_MODEL"
+  ],
+  "MODEL_GESTURES": [
+    "up",
+    "down",
+    "swipe_r",
+    "swipe_l",
+    "twist",
+    "push",
+    "pull",
+    "circle"
+  ],
+  "MODEL_NAME": "NEW_MODEL",
+  "MODEL_SPLIT_RATIO": 0.3,
+  "MODEL_DATA_PATH": "data/models/"
+}

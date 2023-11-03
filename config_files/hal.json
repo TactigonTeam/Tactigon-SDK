@@ -1,0 +1,11 @@
+{
+    "SERIAL_COM_PORT": "COM3",
+    "NUM_SAMPLE": 10,
+    "INTERFACE": "Bluetooth",
+    "BLE_RIGHT_ADDRESS": "C0:83:4B:32:4E:36",
+    "BLE_RIGHT_NAME": "TACTI0",
+    "BLE_RIGHT_ENABLE": true,
+    "BLE_LEFT_ADDRESS": "",
+    "BLE_LEFT_NAME": "",
+    "BLE_LEFT_ENABLE": false
+}
