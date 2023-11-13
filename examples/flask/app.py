@@ -7,12 +7,13 @@ from flask_socketio import SocketIO, emit
 from typing import Optional
 
 from tactigon_speech import TSkin_Speech, TSkinConfig, VoiceConfig, AudioSource, TSpeechObject, TSpeech, HotWord
-from tgear_sdk.models import Hand, GestureConfig
+from tactigon_gear.models import Hand, GestureConfig
 
 def get_tskin() -> TSkin_Speech:
     base_folder = path.abspath(path.dirname(__file__))
 
     TSKIN_MAC = "change-me"
+    TSKIN_MAC = "C0:83:4B:32:4E:36"
     TSKIN_NAME = "TSKIN"
 
     tskin_cfg = TSkinConfig(TSKIN_MAC, TSKIN_NAME, GestureConfig(
@@ -27,7 +28,7 @@ def get_tskin() -> TSkin_Speech:
         path.join(base_folder, "0220_f.scorer"),
     )
 
-    return TSkin_Speech(tskin_cfg, voice_cfg, AudioSource.TSKIN, debug=True)
+    return TSkin_Speech(tskin_cfg, voice_cfg, AudioSource.TSKIN, debug=False)
 
 def tspeech_obj():
     return TSpeechObject(
@@ -149,6 +150,7 @@ def on_record(req):
         tskin_left.record(path.join(base_folder, filename))
 
 def create_app(debug: bool = True):
+
     flask_app = Flask(__name__, template_folder="templates", static_folder="static")
 
     with flask_app.app_context():
@@ -157,14 +159,14 @@ def create_app(debug: bool = True):
 
         flask_app.extensions["tskin_right"] = get_tskin()
         flask_app.extensions["tskin_right"].start()
-
+        # flask_app.extensions["tskin_right"] = None
         flask_app.extensions["tskin_left"] = None
 
         socketio_app.init_app(flask_app)
 
-        import examples.flask.app as app
+        import main
 
-        flask_app.register_blueprint(app.bp)
+        flask_app.register_blueprint(main.bp)
 
     return flask_app
 

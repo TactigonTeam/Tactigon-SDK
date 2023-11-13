@@ -1,23 +1,19 @@
 {% extends "base.jinja" %}
 
 {% block body %}
-<div class="d-flex flex-column flex-fill scrollarea">
-    <h5>TSKIN DATA</h5>
-    <div>
-        <p id="cont"></p>
+<h2>Tactigon Skin BLE data</h2>
+<div class="d-flex flex-row gap-5 my-3">
+    <div class="d-flex flex-column justify-content-around gap-3">
+        <button type="button" class="btn btn-primary" id="play">Play</button>
+        <button type="button" class="btn btn-primary" id="record">Record</button>
+        <button type="button" class="btn btn-primary" id="listen">Listen</button>
     </div>
-    <div class="d-flex flex-row">
-        <div class="d-flex flex-column justify-content-around">
-            <button type="button" class="btn btn-primary m-3" id="play">Play</button>
-            <button type="button" class="btn btn-primary m-3" id="record">Record</button>
-            <button type="button" class="btn btn-primary m-3" id="listen">Listen</button>
+    <div class="d-flex flex-column gap-5">
+        <div id="cont">
         </div>
-        <div class="d-flex">
-            <p id="tskindata"></p>
+        <div id="tskindata">
         </div>
     </div>
-    
-    
 </div>
 {% endblock %}
 

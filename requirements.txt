@@ -1,4 +1,5 @@
-tactigon-gear==4.1.3
-tactigon-speech==4.0.2
+tactigon-gear==4.1.7
+tactigon-speech==4.0.7
 flask==3.0.0
 Flask-SocketIO==5.3.6
+numpy==1.24.4
