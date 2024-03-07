@@ -1,19 +1,17 @@
 import time
 import datetime
 import multiprocessing
-import logging
-from os import path
-from typing import Optional
-from tgear_sdk import TSkin
-from tgear_sdk.models import TSkinConfig, Button, Angle, Gesture, GestureConfig
+from os import path, getcwd
+from tactigon_gear import TSkin, TSkinConfig, Hand, GestureConfig, OneFingerGesture
 
 def main():
-    model_folder = path.join(path.abspath("."))
+    model_folder = getcwd()
 
-    TSKIN_MAC = "change-me"
+    TSKIN_MAC = "DFA9ADB4-C785-D6FE-03C2-2E74DC7EE570"
+    TSKIN_HAND = Hand.RIGHT # Hand.LEFT if hand is left
     TSKIN_NAME = "TSKIN"
 
-    gmodel = GestureConfig(
+    gesture_config = GestureConfig(
         path.join(model_folder, "model.pickle"), 
         path.join(model_folder, "encoder.pickle"),
         "demo",
@@ -21,7 +19,7 @@ def main():
         ["up","down","push","pull","twist","circle","swipe_r","swipe_l"]
     )
 
-    tskin = TSkin(TSkinConfig(TSKIN_MAC, TSKIN_NAME, gmodel))
+    tskin = TSkin(TSkinConfig(TSKIN_MAC, TSKIN_HAND, TSKIN_NAME, gesture_config))
     tskin.start()
 
     print("connecting tskin", tskin)
@@ -29,22 +27,29 @@ def main():
     while not tskin.connected:
         pass
 
+    i = 0
+
     while True:
         if not tskin.connected:
             print("Connecting...")
             time.sleep(0.2)
             continue
 
-        b: Button = tskin.button
-        a: Angle = tskin.angle
-        g = tskin.gesture
-
-        print(b, a, g)
-
-        if b == Button.CIRCLE:
+        if i > 5:
             break
 
-        time.sleep(0.1)
+        t = tskin.touch
+        a = tskin.angle
+        g = tskin.gesture
+
+        print(t, a, g)
+
+        if t and t.one_finger == OneFingerGesture.TAP_AND_HOLD:
+            i += 1
+        else:
+            i = 0
+
+        time.sleep(0.02)
 
     print("exit")
 
@@ -52,4 +57,5 @@ def main():
 
 
 if __name__ == "__main__":
+    multiprocessing.freeze_support()
     main()

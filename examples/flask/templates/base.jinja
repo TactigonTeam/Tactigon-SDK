@@ -1,35 +1,3 @@
-{% macro tskin(hand, tskin) %}
-    <div>
-        <img src="{{ url_for('static', filename='images/' + hand + '.png') }}" alt="twbs" width="32" height="32">
-        <small>{{ tskin.config.name }}</small>
-    </div>
-    <div class="tskin-{{hand}}">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-broadcast connected" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
-        </svg>
-        {# <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bluetooth connected" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="m8.543 3.948 1.316 1.316L8.543 6.58V3.948Zm0 8.104 1.316-1.316L8.543 9.42v2.632Zm-1.41-4.043L4.275 5.133l.827-.827L7.377 6.58V1.128l4.137 4.136L8.787 8.01l2.745 2.745-4.136 4.137V9.42l-2.294 2.274-.827-.827L7.133 8.01ZM7.903 16c3.498 0 5.904-1.655 5.904-8.01 0-6.335-2.406-7.99-5.903-7.99C4.407 0 2 1.655 2 8.01 2 14.344 4.407 16 7.904 16Z"/>
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-broadcast disconnected" viewBox="0 0 16 16">
-            <path fill="#636363" d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
-        </svg> #}
-    </div>
-    <!-- <div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-broadcast" viewBox="0 0 16 16">
-            <path d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
-        </svg>
-        <small>-58 dBm</small>
-    </div>
-    <div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-battery-full" viewBox="0 0 16 16">
-            <path d="M2 6h10v4H2V6z" />
-            <path d="M2 4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H2zm10 1a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h10zm4 3a1.5 1.5 0 0 1-1.5 1.5v-3A1.5 1.5 0 0 1 16 8z" />
-        </svg>
-        <small>100%</small>
-    </div> -->
-
-{% endmacro %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tactigon SDK demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <!-- <link href="{{ url_for('static', filename='css/struct_no.css') }}" rel="stylesheet"> -->
     <link href="{{ url_for('static', filename='css/tskin.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,29 +16,10 @@
 </head>
 <body>
     <nav class="bg-tskin py-2">
-        <div class="d-flex align-items-center justify-content-between px-3 text-light">
-            <div>
-                <a href="{{ url_for('main.disconnect') }}" title="Disconnect Tactigon Skin" class="btn text-light" id="disconnect_tskin">
-                    <svg width="30" height="30" viewBox="0 0 40 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M0.765806 12.4697C5.3185 11.1389 14.901 9 24.3289 9C37.159 9 40 12.4225 40 20.7885C40 28.6791 40 30.9608 34.6414 30.9608H6.91656C1.96779 30.9608 -1.1481 19.6477 12.6901 19.6477H32.027C36.5175 19.6477 36.6092 13.3731 32.4852 12.2323C28.4499 11.116 16.0789 10.5459 1.38217 14.6189C0.833908 14.7709 0.260099 14.4671 0.0661623 13.9138C-0.145839 13.309 0.168707 12.6443 0.765806 12.4697ZM38.1239 25.732L4.94877 25.732V26.3024C4.94877 27.8776 6.17968 29.1545 7.69809 29.1545L35.3745 29.1545C36.8929 29.1545 38.1239 27.8776 38.1239 26.3024V25.732Z"/>
-                    </svg>
-                    <small class="ms-1">Disconnect</small>
-                </a>
-            </div>
-            
-
+        <div class="d-flex align-items-center justify-content-center px-3 text-light">         
             <span class="fs-4">
                 Tactigon SDK
             </span>
-
-            <div class="d-flex gap-3">
-                {% if tskin_right %}
-                    {{tskin("right", tskin_right)}}
-                {% endif %}
-                {% if tskin_left %}
-                    {{tskin("left", tskin_left)}}
-                {% endif %}
-            </div>
         </div>
     </nav>
     <div class="col-lg-10 mx-auto p-3 py-md-5">
@@ -95,63 +43,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
     <script>
-        const toastElList = document.querySelectorAll('.toast');
-        const toast_option = {
-            animation: true,
-            autohide: true,
-            delay: 3000
-        }
-        const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl, toast_option))
-        toastList.forEach(toast => {
-            toast.show()
-        });
-
-        $(".tskin-right").find(".connected").hide();
-        $(".tskin-left").find(".connected").hide();
-        $("#disconnect_tskin").hide();
-
-        var socket = io();
-        socket.on('config', function(data) {
-            if (data.tskin_right){
-                setInterval(() => {
-                    socket.emit('tskin_connection', {hand: 'right'});
-                }, 1000)
-            }
-
-            if (data.tskin_left){
-                setInterval(() => {
-                    socket.emit('tskin_connection', {hand: 'left'});
-                }, 1000)
-            }
-        });
-
-        socket.on("right_tskin_conn", function(data) {
-            if (data.connected){
-                $("#disconnect_tskin").show()
-                $(".tskin-right").find(".connected").show();
-                $(".tskin-right").find(".disconnected").hide();
-            } else {
-                $("#disconnect_tskin").hide()
-                $(".tskin-right").find(".connected").hide();
-                $(".tskin-right").find(".disconnected").show();
-            }
-        })
-
-        socket.on("left_tskin_conn", function(data) {
-            if (data.connected){
-                $("#disconnect_tskin").show()
-                $(".tskin-left").find(".connected").show();
-                $(".tskin-left").find(".disconnected").hide();
-            } else {
-                $("#disconnect_tskin").hide()
-                $(".tskin-left").find(".connected").hide();
-                $(".tskin-left").find(".disconnected").show();
-            }
-        })
-
-        // socket.on("left_sensor_state", (data) => {
-        //     console.log(data.angle.roll,data.angle.pitch,data.angle.yaw)
-        // })
+        const socket = io();
     </script>
     {% block script %}{% endblock %}
 </body>

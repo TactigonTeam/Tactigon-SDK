@@ -1,13 +1,12 @@
 import time
 
-from tgear_sdk import TSkin
-from tgear_sdk.models import TSkinConfig, Button
+from tactigon_gear import TSkin, TSkinConfig, Hand, OneFingerGesture
 
 def main():
-    TSKIN_MAC = "change-me"
-    tskin_cfg = TSkinConfig(TSKIN_MAC)
+    TSKIN_MAC = "DFA9ADB4-C785-D6FE-03C2-2E74DC7EE570"
+    tskin_cfg = TSkinConfig(TSKIN_MAC, Hand.RIGHT) # Hand.LEFT if the TSkin is wear on left hand.
 
-    tskin = TSkin(tskin_cfg, debug=True)
+    tskin = TSkin(tskin_cfg)
     tskin.start()
 
     i = 0
@@ -22,21 +21,18 @@ def main():
             break
 
         a = tskin.angle
-        b = tskin.button
+        t = tskin.touch
         acc = tskin.acceleration
         gyro = tskin.gyro
 
-        print(a, b, acc, gyro)
+        print(a, t, acc, gyro)
 
-        if b == Button.CIRCLE:
-            tskin.select_voice()
-            time.sleep(5)
-            tskin.select_sensors()
-
-        if b == Button.TRIANGLE:
+        if t and t.one_finger == OneFingerGesture.TAP_AND_HOLD:
             i += 1
+        else:
+            i = 0
 
-        time.sleep(0.1)
+        time.sleep(0.02)
 
     tskin.terminate()
 

@@ -1,7 +1,7 @@
 ''' 
 ------------------ RELEASE NOTE -------------------
 
-v. 4.0.0 compatible with Tactigon Gear >= 4.1.3
+v. 5.0.0 compatible with Tactigon Gear >= 5.0.3
 
 This software is provided as is.
 It allows to connect to Tactigon Server to train new gesture recognition model.
