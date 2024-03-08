@@ -1,6 +1,12 @@
 # Tactigon Speech
 
-The Tactigon Speech librarr is compatibile with:
+To install tactigon speech run
+
+```
+pip install tactigon-speech
+```
+
+The Tactigon Speech library is compatibile with:
 
 ### Linux / AMD64
 x86-64 CPU with AVX/FMA
