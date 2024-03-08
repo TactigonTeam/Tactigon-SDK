@@ -3,7 +3,7 @@ import time
 from tactigon_gear import TSkin, TSkinConfig, Hand, OneFingerGesture
 
 def main():
-    TSKIN_MAC = "DFA9ADB4-C785-D6FE-03C2-2E74DC7EE570"
+    TSKIN_MAC = "change-me"
     tskin_cfg = TSkinConfig(TSKIN_MAC, Hand.RIGHT) # Hand.LEFT if the TSkin is wear on left hand.
 
     tskin = TSkin(tskin_cfg)

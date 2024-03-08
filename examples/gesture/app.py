@@ -7,7 +7,7 @@ from tactigon_gear import TSkin, TSkinConfig, Hand, GestureConfig, OneFingerGest
 def main():
     model_folder = getcwd()
 
-    TSKIN_MAC = "DFA9ADB4-C785-D6FE-03C2-2E74DC7EE570"
+    TSKIN_MAC = "change-me"
     TSKIN_HAND = Hand.RIGHT # Hand.LEFT if hand is left
     TSKIN_NAME = "TSKIN"
 
