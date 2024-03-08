@@ -28,7 +28,7 @@ def main():
     tskin_cfg = TSkinConfig(TSKIN_MAC, Hand.RIGHT) # Hand.LEFT if the TSkin is wear on left hand.
 
     voice_cfg = VoiceConfig(
-        path.join(model_folder, "deepspeech-0.9.3-models.tflite"), 
+        path.join(model_folder, "models.tflite"), 
         path.join(model_folder, "0220_f.scorer"),
     )
 
