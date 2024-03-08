@@ -24,7 +24,7 @@ def tspeech_obj():
 def main():
     model_folder = getcwd()
 
-    TSKIN_MAC = "C0:83:3B:39:21:57"
+    TSKIN_MAC = "change-me"
     tskin_cfg = TSkinConfig(TSKIN_MAC, Hand.RIGHT) # Hand.LEFT if the TSkin is wear on left hand.
 
     voice_cfg = VoiceConfig(
