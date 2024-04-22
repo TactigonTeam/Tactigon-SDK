@@ -4,3 +4,4 @@ Flask-SocketIO==5.3.6
 numpy==1.24.4
 gevent==24.2.1
 PyAudio==0.2.14
+tactigon_arduino_braccio==1.0.0
