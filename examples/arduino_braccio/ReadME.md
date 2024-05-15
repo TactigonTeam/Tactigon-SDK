@@ -45,11 +45,11 @@ async def main(args: argparse.Namespace):
     )
 
     for d, a in devices.values():
-        if d.name and "TSKIN50" or "ADA" in d.name:
+        name = str(d.name)
+        if "TSKIN" in name or "ADA" in name:
             print(d)
             print("-" * len(str(d)))
             print(a)
-            print("\n")
 
 
 if __name__ == "__main__":
