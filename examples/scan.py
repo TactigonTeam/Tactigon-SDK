@@ -22,7 +22,7 @@ async def main(args: argparse.Namespace):
     )
 
     for d, a in devices.values():
-        if d.name and "TACTI" in d.name:
+        if d.name and "TSKIN50" in d.name:
             print(d)
             print("-" * len(str(d)))
             print(a)
