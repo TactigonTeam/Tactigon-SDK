@@ -9,11 +9,11 @@ def tspeech_obj():
     return TSpeechObject(
         [
             TSpeech(
-                [HotWord("draw")],
+                [HotWord("start")],
                 TSpeechObject(
                     [
                         TSpeech(
-                            [HotWord("circle"), HotWord("triangle"), HotWord("box")]
+                            [HotWord("application")]
                         )
                     ]
                 )
@@ -24,12 +24,12 @@ def tspeech_obj():
 def main():
     model_folder = getcwd()
 
-    TSKIN_MAC = "change-me"
+    TSKIN_MAC = "C0:83:35:39:21:57"
     tskin_cfg = TSkinConfig(TSKIN_MAC, Hand.RIGHT) # Hand.LEFT if the TSkin is wear on left hand.
 
     voice_cfg = VoiceConfig(
         path.join(model_folder, "models.tflite"), 
-        path.join(model_folder, "0220_f.scorer"),
+        path.join(model_folder, "tos.scorer"),
     )
 
     tskin = TSkin_Speech(tskin_cfg, voice_cfg)
@@ -75,6 +75,7 @@ def main():
             if touch.one_finger == OneFingerGesture.TAP_AND_HOLD:
                 i += 1
             elif touch.one_finger == OneFingerGesture.SINGLE_TAP:
+                print('hurray')
                 if tskin.listen(tspeech_obj()):
                     print("Waiting for voice commands...")
                     print("Try to say:\n - Draw a box\n - Draw a circle\n - Draw a triangle")
