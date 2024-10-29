@@ -165,9 +165,7 @@ def run_speech(tskin: TSkin):
 
         time.sleep(0.02)
 
-    cprint("Disconnecting...", 'light_yellow')
-    tskin.terminate()
-    cprint("Disconnected!", 'red')
+    disconnect_tskin(tskin)
 
 def run_gear(tskin: TSkin):
     cprint(f"connecting tskin {tskin}", 'light_magenta')
@@ -203,10 +201,13 @@ def run_gear(tskin: TSkin):
 
         time.sleep(0.02)
 
-    cprint("Disconnecting...", 'light_yellow')
-    tskin.terminate()
-    cprint("Disconnected!", 'red')
+    disconnect_tskin(tskin)
 
+def disconnect_tskin(tskin: TSkin):
+    if tskin and tskin.connected:
+        cprint("Disconnecting...", 'light_yellow')
+        tskin.terminate()
+        cprint("Disconnected!", 'red')
 
 def main():
     cprint('We are looking for your TSKIN...', 'light_magenta')
