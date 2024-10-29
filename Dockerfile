@@ -6,8 +6,10 @@ RUN apt-get update && apt-get install -y build-essential python3-dev bluez bluet
 
 RUN pip install --upgrade pip
 
-COPY requirements.txt .
+COPY docker-requirements.txt .
 
-RUN pip install -r requirements.txt
+RUN pip install -r docker-requirements.txt
 
 COPY . .
+
+CMD ["python", "docker.py"]

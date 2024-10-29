@@ -1,6 +1,5 @@
-version: '3'
 services:
-  app:
+  tactigon:
     container_name: Tactigon-SDK
     build:
       context: .  
@@ -11,5 +10,3 @@ services:
       - .:/app
     stdin_open: true  
     tty: true        
-    command: "python examples/gesture/app.py"
-    # command: "python examples/speech/app.py"
