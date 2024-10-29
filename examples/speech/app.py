@@ -24,12 +24,14 @@ def tspeech_obj():
 def main():
     model_folder = getcwd()
 
+    print(model_folder)
+
     TSKIN_MAC = "C0:83:35:39:21:57"
     tskin_cfg = TSkinConfig(TSKIN_MAC, Hand.RIGHT) # Hand.LEFT if the TSkin is wear on left hand.
 
     voice_cfg = VoiceConfig(
-        path.join(model_folder, "models.tflite"), 
-        path.join(model_folder, "tos.scorer"),
+        path.join(model_folder, "examples", "speech", "models.tflite"), 
+        path.join(model_folder, "examples", "speech", "0220_f.scorer"),
     )
 
     tskin = TSkin_Speech(tskin_cfg, voice_cfg)
