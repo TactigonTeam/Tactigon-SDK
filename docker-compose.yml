@@ -1,7 +1,7 @@
 version: '3'
 services:
   app:
-    container_name: Tactigon-Test
+    container_name: Tactigon-SDK
     build:
       context: .  
     network_mode: "host"
