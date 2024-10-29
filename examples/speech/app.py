@@ -1,6 +1,5 @@
 import time
 
-
 from os import path, getcwd
 
 from tactigon_speech import TSkin_Speech, TSkinConfig, Hand, VoiceConfig, OneFingerGesture, TSpeechObject, TSpeech, HotWord
@@ -9,7 +8,7 @@ def tspeech_obj():
     return TSpeechObject(
         [
             TSpeech(
-                [HotWord("start")],
+                [HotWord("start"), HotWord("enter")],
                 TSpeechObject(
                     [
                         TSpeech(
@@ -24,14 +23,12 @@ def tspeech_obj():
 def main():
     model_folder = getcwd()
 
-    print(model_folder)
-
-    TSKIN_MAC = "C0:83:35:39:21:57"
+    TSKIN_MAC = "change-me"
     tskin_cfg = TSkinConfig(TSKIN_MAC, Hand.RIGHT) # Hand.LEFT if the TSkin is wear on left hand.
 
     voice_cfg = VoiceConfig(
         path.join(model_folder, "examples", "speech", "models.tflite"), 
-        path.join(model_folder, "examples", "speech", "0220_f.scorer"),
+        path.join(model_folder, "examples", "speech", "tos.scorer"),
     )
 
     tskin = TSkin_Speech(tskin_cfg, voice_cfg)
