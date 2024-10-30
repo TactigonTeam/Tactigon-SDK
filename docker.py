@@ -161,8 +161,6 @@ def speech():
 
         time.sleep(0.02)
 
-    # disconnect_tskin(tskin)
-
 def gear():
 
     i = 0
@@ -192,8 +190,6 @@ def gear():
             i = 0
 
         time.sleep(0.02)
-
-    # disconnect_tskin(tskin)
 
 def connect_tskin():
     while not TSKIN.connected:
