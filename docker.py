@@ -8,6 +8,7 @@ from tactigon_gear import TSkin, TSkinConfig, Hand, GestureConfig, OneFingerGest
 from tactigon_speech import TSkin_Speech, TSkinConfig, Hand, VoiceConfig, OneFingerGesture, TSpeechObject, TSpeech, HotWord
 
 TARGET_DEVICE_NAME = "TSKIN50"
+TSKIN: TSkin = None
 
 async def scan_devices(): 
     tskin_devices: dict = dict()
@@ -76,9 +77,10 @@ def configure_tskin(tskin_mac: str, tskin_hand: Hand) -> TSkin:
 
     )
 
-    tskin = TSkin_Speech(tskin_cfg, voice_cfg)
+    global TSKIN
+    TSKIN = TSkin_Speech(tskin_cfg, voice_cfg)
 
-    return tskin
+    return
 
 
 def select_program():
@@ -101,7 +103,7 @@ def select_program():
     
         return programs[selected_program]
     
-def speech(tskin: TSkin):
+def speech():
     tspeech_obj = TSpeechObject(
         [
             TSpeech(
@@ -119,14 +121,8 @@ def speech(tskin: TSkin):
 
     i = 0
 
-    while not tskin.connected:
-        cprint("Connecting..", 'light_magenta')
-        time.sleep(0.5)
-    
-    cprint("Connected!", 'green')
-
     while True:
-        if not tskin.connected:
+        if not TSKIN.connected:
             cprint("Reconnecting..", 'light_magenta')
             time.sleep(0.5)
             continue
@@ -134,13 +130,13 @@ def speech(tskin: TSkin):
         if i > 2:
             break
 
-        if tskin.is_listening:
+        if TSKIN.is_listening:
             cprint("Listening...", 'light_magenta')
             time.sleep(0.5)
             continue
 
-        touch = tskin.touch
-        transcription = tskin.transcription
+        touch = TSKIN.touch
+        transcription = TSKIN.transcription
 
         if transcription:
             if transcription.timeout:
@@ -157,7 +153,7 @@ def speech(tskin: TSkin):
             if touch.one_finger == OneFingerGesture.TAP_AND_HOLD:
                 i += 1
             elif touch.one_finger == OneFingerGesture.SINGLE_TAP:
-                if tskin.listen(tspeech_obj):
+                if TSKIN.listen(tspeech_obj):
                     cprint("Waiting for voice commands...", 'light_magenta')
                     cprint("Try to say:\n - Start application\n - Enter applcaition\n", 'blue')
         else:
@@ -165,28 +161,24 @@ def speech(tskin: TSkin):
 
         time.sleep(0.02)
 
-    disconnect_tskin(tskin)
+    # disconnect_tskin(tskin)
 
-def gear(tskin: TSkin):
-    cprint(f"connecting tskin {tskin}", 'light_magenta')
-
-    while not tskin.connected:
-        pass
+def gear():
 
     i = 0
 
     while True:
-        if not tskin.connected:
-            cprint("Connecting...", 'blue')
+        if not TSKIN.connected:
+            cprint("Reconnecting..", 'light_magenta')
             time.sleep(0.2)
             continue
 
         if i > 5:
             break
 
-        t = tskin.touch
-        a = tskin.angle
-        g = tskin.gesture
+        t = TSKIN.touch
+        a = TSKIN.angle
+        g = TSKIN.gesture
 
         cprint(a, 'light_grey')
 
@@ -201,12 +193,20 @@ def gear(tskin: TSkin):
 
         time.sleep(0.02)
 
-    disconnect_tskin(tskin)
+    # disconnect_tskin(tskin)
 
-def disconnect_tskin(tskin: TSkin):
-    if tskin and tskin.connected:
+def connect_tskin():
+    while not TSKIN.connected:
+        cprint("Connecting..", 'light_magenta')
+        time.sleep(0.5)
+    
+    cprint("Connected!", 'green')
+
+
+def disconnect_tskin():
+    if TSKIN and TSKIN.connected:
         cprint("Disconnecting...", 'light_yellow')
-        tskin.terminate()
+        TSKIN.terminate()
         cprint("Disconnected!", 'red')
 
 def main():
@@ -226,12 +226,17 @@ def main():
             hand = get_selected_hand()
             program = select_program()
 
-            tskin = configure_tskin(mac_address, hand)
-            tskin.start()
+            configure_tskin(mac_address, hand)
+            TSKIN.start()
+            connect_tskin()
 
-            globals()[program](tskin)
+            globals()[program]()
 
+        disconnect_tskin()
         return
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except(KeyboardInterrupt):
+        disconnect_tskin()
