@@ -1,6 +1,6 @@
 services:
-  tactigon:
-    container_name: Tactigon-SDK
+  app:
+    image: tactigon-sdk
     build:
       context: .  
     network_mode: "host"

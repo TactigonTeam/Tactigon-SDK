@@ -17,7 +17,7 @@ async def scan_devices():
     cprint('Scanning started...\n', 'light_magenta')
 
     devices = await BleakScanner.discover()
-    for i, device in enumerate(devices, 1):
+    for device in devices:
         if device.name == TARGET_DEVICE_NAME:
             tskin_devices[index] = device.address
             index += 1
@@ -62,8 +62,8 @@ def configure_tskin(tskin_mac: str, tskin_hand: Hand) -> TSkin:
     TSKIN_NAME = "TSKIN"
 
     gesture_config = GestureConfig(
-        path.join(model_folder, "examples", "gesture","model.pickle"), 
-        path.join(model_folder, "examples", "gesture", "encoder.pickle"),
+        path.join(model_folder, "model.pickle"), 
+        path.join(model_folder, "encoder.pickle"),
         "demo",
         datetime.datetime.now(),
         ["up","down","push","pull","twist","circle","swipe_r","swipe_l"]
@@ -72,8 +72,8 @@ def configure_tskin(tskin_mac: str, tskin_hand: Hand) -> TSkin:
     tskin_cfg = TSkinConfig(tskin_mac, tskin_hand, TSKIN_NAME, gesture_config)
 
     voice_cfg = VoiceConfig(
-        path.join(model_folder, "examples", "speech", "models.tflite"), 
-        path.join(model_folder, "examples", "speech", "tos.scorer"),
+        path.join(model_folder, "models.tflite"), 
+        path.join(model_folder, "tos.scorer"),
 
     )
 

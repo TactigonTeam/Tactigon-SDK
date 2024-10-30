@@ -10,6 +10,12 @@ COPY docker-requirements.txt .
 
 RUN pip install -r docker-requirements.txt
 
-COPY . .
+COPY ./examples/gesture/encoder.pickle .
+COPY ./examples/gesture/model.pickle .
+
+COPY ./examples/speech/models.tflite .
+COPY ./examples/speech/tos.scorer .
+
+COPY docker.py .
 
 CMD ["python", "docker.py"]
