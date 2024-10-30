@@ -3,10 +3,8 @@ services:
     image: tactigon-sdk
     build:
       context: .  
-    network_mode: "host"
     privileged: true
     volumes:
-      - /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket
-      - .:/app
+      - /var/run/dbus:/var/run/dbus
     stdin_open: true  
     tty: true        
