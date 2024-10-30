@@ -55,7 +55,7 @@ def get_selected_hand():
         cprint(f"You selected {tskin_hand.value} hand\n", 'light_green')
         return tskin_hand
 
-def configure_tskin(tskin_mac: str, is_speech, tskin_hand: Hand) -> TSkin:
+def configure_tskin(tskin_mac: str, tskin_hand: Hand) -> TSkin:
     model_folder = getcwd()
 
     TSKIN_NAME = "TSKIN"
@@ -76,7 +76,7 @@ def configure_tskin(tskin_mac: str, is_speech, tskin_hand: Hand) -> TSkin:
 
     )
 
-    tskin = TSkin_Speech(tskin_cfg, voice_cfg) if is_speech else TSkin(TSkinConfig(tskin_mac, Hand, TSKIN_NAME, gesture_config))
+    tskin = TSkin_Speech(tskin_cfg, voice_cfg)
 
     return tskin
 
@@ -101,7 +101,7 @@ def select_program():
     
         return programs[selected_program]
     
-def run_speech(tskin: TSkin):
+def speech(tskin: TSkin):
     tspeech_obj = TSpeechObject(
         [
             TSpeech(
@@ -167,7 +167,7 @@ def run_speech(tskin: TSkin):
 
     disconnect_tskin(tskin)
 
-def run_gear(tskin: TSkin):
+def gear(tskin: TSkin):
     cprint(f"connecting tskin {tskin}", 'light_magenta')
 
     while not tskin.connected:
@@ -210,7 +210,7 @@ def disconnect_tskin(tskin: TSkin):
         cprint("Disconnected!", 'red')
 
 def main():
-    cprint('We are looking for your TSKIN...', 'light_magenta')
+    cprint('We are looking for your Tactigon Skin...', 'light_magenta')
 
     while True:
 
@@ -226,13 +226,10 @@ def main():
             hand = get_selected_hand()
             program = select_program()
 
-            tskin = configure_tskin(mac_address, program == 'speech', hand)
+            tskin = configure_tskin(mac_address, hand)
             tskin.start()
 
-            if program == 'speech':
-                run_speech(tskin)
-            else:
-                run_gear(tskin)
+            globals()[program](tskin)
 
         return
 
