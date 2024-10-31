@@ -1,6 +1,5 @@
 import time
 
-
 from os import path, getcwd
 
 from tactigon_speech import TSkin_Speech, TSkinConfig, Hand, VoiceConfig, OneFingerGesture, TSpeechObject, TSpeech, HotWord
@@ -9,11 +8,11 @@ def tspeech_obj():
     return TSpeechObject(
         [
             TSpeech(
-                [HotWord("draw")],
+                [HotWord("start"), HotWord("enter")],
                 TSpeechObject(
                     [
                         TSpeech(
-                            [HotWord("circle"), HotWord("triangle"), HotWord("box")]
+                            [HotWord("application")]
                         )
                     ]
                 )
@@ -28,8 +27,8 @@ def main():
     tskin_cfg = TSkinConfig(TSKIN_MAC, Hand.RIGHT) # Hand.LEFT if the TSkin is wear on left hand.
 
     voice_cfg = VoiceConfig(
-        path.join(model_folder, "models.tflite"), 
-        path.join(model_folder, "0220_f.scorer"),
+        path.join(model_folder, "examples", "speech", "models.tflite"), 
+        path.join(model_folder, "examples", "speech", "tos.scorer"),
     )
 
     tskin = TSkin_Speech(tskin_cfg, voice_cfg)
@@ -75,6 +74,7 @@ def main():
             if touch.one_finger == OneFingerGesture.TAP_AND_HOLD:
                 i += 1
             elif touch.one_finger == OneFingerGesture.SINGLE_TAP:
+                print('hurray')
                 if tskin.listen(tspeech_obj()):
                     print("Waiting for voice commands...")
                     print("Try to say:\n - Draw a box\n - Draw a circle\n - Draw a triangle")

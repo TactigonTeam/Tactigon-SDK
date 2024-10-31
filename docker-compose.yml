@@ -1,0 +1,12 @@
+services:
+  app:
+    image: tactigon-sdk
+    build:
+      context: .  
+    privileged: true
+    volumes:
+      - /var/run/dbus:/var/run/dbus
+    stdin_open: true  
+    tty: true        
+
+#docker run --privileged -v /run/dbus:/run/dbus -it tactigon-sdk
