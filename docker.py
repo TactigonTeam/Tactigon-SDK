@@ -121,6 +121,8 @@ def speech():
 
     i = 0
 
+    cprint("Tap to enable listening mode.", "light_cyan")
+
     while True:
         if not TSKIN.connected:
             cprint("Reconnecting..", 'light_magenta')
