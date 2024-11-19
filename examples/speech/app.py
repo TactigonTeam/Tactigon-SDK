@@ -74,10 +74,9 @@ def main():
             if touch.one_finger == OneFingerGesture.TAP_AND_HOLD:
                 i += 1
             elif touch.one_finger == OneFingerGesture.SINGLE_TAP:
-                print('hurray')
                 if tskin.listen(tspeech_obj()):
                     print("Waiting for voice commands...")
-                    print("Try to say:\n - Draw a box\n - Draw a circle\n - Draw a triangle")
+                    print("Try to say:\n - Start application\n - Enter application\n")
         else:
             i = 0
 
