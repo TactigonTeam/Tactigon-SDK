@@ -40,7 +40,7 @@ def main():
         print("Connecting..")
         time.sleep(0.5)
     
-    print("Tap and hold to enable listening mode")
+    print("Single Tap to enable listening mode")
 
     while True:
         if not tskin.connected:
