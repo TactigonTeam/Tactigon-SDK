@@ -12,7 +12,7 @@ def create_tskin() -> TSkin:
 
     # TSKIN CONFIGURATION
 
-    TSKIN_MAC = "I need a Mac address"
+    TSKIN_MAC = "TSkin Mac address"
 
     # Do not change the code below unless absolutely necessary.
     TSKIN_HAND = Hand.RIGHT
@@ -36,7 +36,7 @@ def main():
     tskin.start()
 
     # BRACCIO CONFIGURATION
-    braccio_config = BraccioConfig("I need a Mac address")
+    braccio_config = BraccioConfig("Braccio Mac address")
 
     with Braccio(braccio_config) as braccio:
 
