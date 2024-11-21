@@ -19,8 +19,8 @@ def create_tskin() -> TSkin:
     TSKIN_NAME = "TSKIN"
 
     gesture_config = GestureConfig(
-        path.join(model_folder, "model.pickle"),
-        path.join(model_folder, "encoder.pickle"),
+        path.join(model_folder, "examples", "gesture","model.pickle"), 
+        path.join(model_folder, "examples", "gesture", "encoder.pickle"),
         "demo",
         datetime.datetime.now(),
         ["up", "down", "push", "pull", "twist", "circle", "swipe_r", "swipe_l"]
