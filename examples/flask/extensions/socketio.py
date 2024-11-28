@@ -61,7 +61,7 @@ class SocketApp(SocketIO):
                 "tskin": {
                     "connected": tskin.connected,
                     "battery": tskin.battery,
-                    "selector": tskin.ble.selector.value,
+                    "selector": tskin.selector.value,
                     "touchpad": {
                         "name": t.one_finger.name if t.one_finger is not OneFingerGesture.NONE else t.two_finger.name,
                         "x": t.x_pos,

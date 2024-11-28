@@ -12,15 +12,15 @@ def create_tskin() -> TSkin:
 
     # TSKIN CONFIGURATION
 
-    TSKIN_MAC = "TSkin Mac address"
+    TSKIN_MAC = "C0:83:43:39:21:57"
 
     # Do not change the code below unless absolutely necessary.
     TSKIN_HAND = Hand.RIGHT
     TSKIN_NAME = "TSKIN"
 
     gesture_config = GestureConfig(
-        path.join(model_folder, "examples", "gesture","model.pickle"), 
-        path.join(model_folder, "examples", "gesture", "encoder.pickle"),
+        path.join(model_folder, "examples", "gear","model.pickle"), 
+        path.join(model_folder, "examples", "gear", "encoder.pickle"),
         "demo",
         datetime.datetime.now(),
         ["up", "down", "push", "pull", "twist", "circle", "swipe_r", "swipe_l"]
@@ -35,8 +35,10 @@ def main():
     tskin = create_tskin()
     tskin.start()
 
+    BRACCIO_MAC = "D1:EF:85:90:07:DE"
+
     # BRACCIO CONFIGURATION
-    braccio_config = BraccioConfig("Braccio Mac address")
+    braccio_config = BraccioConfig(BRACCIO_MAC)
 
     with Braccio(braccio_config) as braccio:
 
@@ -44,9 +46,13 @@ def main():
         while not tskin.connected:
             time.sleep(0.1)
 
+        print("Connected TSkin")
+
         print("Connecting Braccio...")
         while not braccio.connected:
             time.sleep(0.1)
+
+        print("Connected Braccio")
 
         x, y, z = 0, 0, 150
         wrist = Wrist.HORIZONTAL
@@ -69,19 +75,23 @@ def main():
             a = tskin.angle
             g = tskin.gesture
 
-            if g and g.gesture == 'up':
+            if g and g.gesture == "circle":
                 break
 
-            if t and t.two_finger == TwoFingerGesture.TWO_FINGER_TAP:
-                gripper = Gripper.OPEN if gripper == Gripper.CLOSE else Gripper.CLOSE
+            if g and g.gesture == 'up':
+                z = 150
                 modified = True
 
-            if t and t.one_finger == OneFingerGesture.SINGLE_TAP:
-                z = 150 if z == 0 else 0
+            if g and g.gesture == 'down':
+                z = 0
                 modified = True
 
             if g and g.gesture == 'twist':
                 wrist = Wrist.VERTICAL if wrist == Wrist.HORIZONTAL else Wrist.HORIZONTAL
+                modified = True
+
+            if t and t.one_finger == OneFingerGesture.SINGLE_TAP:
+                gripper = Gripper.OPEN if gripper == Gripper.CLOSE else Gripper.CLOSE
                 modified = True
 
             if t and a and t.one_finger == OneFingerGesture.TAP_AND_HOLD:
@@ -115,7 +125,6 @@ def main():
 
         print("Disconnected")
         braccio.home()
-
         tskin.terminate()
 
 

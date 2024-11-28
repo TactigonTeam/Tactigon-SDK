@@ -15,7 +15,7 @@ if __name__ == "__main__":
         
         x = 120
         y = 50
-        z = 20
+        z = 150
         wrist = Wrist.HORIZONTAL
         gripper = Gripper.OPEN
         res, status, time = braccio.move(x, y, z, wrist, gripper)

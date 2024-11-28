@@ -8,13 +8,13 @@ tskin: TSkin = None
 def main():
     model_folder = getcwd()
 
-    TSKIN_MAC = "change-me"
+    TSKIN_MAC = "C0:83:43:39:21:57"
     TSKIN_HAND = Hand.RIGHT # Hand.LEFT if hand is left
     TSKIN_NAME = "TSKIN"
 
     gesture_config = GestureConfig(
-        path.join(model_folder, "examples", "gesture","model.pickle"), 
-        path.join(model_folder, "examples", "gesture", "encoder.pickle"),
+        path.join(model_folder, "examples", "gear","model.pickle"), 
+        path.join(model_folder, "examples", "gear", "encoder.pickle"),
         "demo",
         datetime.datetime.now(),
         ["up","down","push","pull","twist","circle","swipe_r","swipe_l"]

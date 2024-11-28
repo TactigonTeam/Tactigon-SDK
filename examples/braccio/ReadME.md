@@ -8,11 +8,12 @@ The Tactigon Skin is a device that recognizes hand gestures and finger movements
 
 Here are some of the gestures and their corresponding actions:
 
-- TWO_FINGER_TAP - Controls the opening and closing of the robotic gripper.
-- SINGLE_TAP - Moves the arm up and down, within the Z axis. 
-- TWIST GESTURE - Rotates the Braccio wrist.
-- UP GESTURE - Terminate the Program.
-- TAP_AND_HOLD - Moves the arm within the XY directions, by combination of the base and shoulder.
+ - SINGLE_TAP - Controls the opening and closing of the robotic gripper.
+ - UP GESTURE - Moves the arm up within the Z axis.
+ - DOWN GESTURE - Moves the arm down within the Z axis.
+ - TWIST GESTURE - Rotates the Braccio wrist.
+ - TAP_AND_HOLD - Moves the arm within the XY directions, by combination of the base and shoulder.
+ - CIRCLE GESTURE - Terminate the Program.
 
 
 ## Hardware Requirements
