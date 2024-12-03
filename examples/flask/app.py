@@ -79,7 +79,7 @@ if __name__ == "__main__":
     app = GuiApp("127.0.0.1", 5001)
     app.start()
 
-    input("Press a button to stop")
+    input("Press any button to stop the application")
 
     app.stop()
 
