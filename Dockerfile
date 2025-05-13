@@ -10,8 +10,8 @@ COPY docker-requirements.txt .
 
 RUN pip install -r docker-requirements.txt
 
-COPY ./examples/gesture/encoder.pickle .
-COPY ./examples/gesture/model.pickle .
+COPY ./examples/gear/encoder.pickle .
+COPY ./examples/gear/model.pickle .
 
 COPY ./examples/speech/models.tflite .
 COPY ./examples/speech/tos.scorer .
