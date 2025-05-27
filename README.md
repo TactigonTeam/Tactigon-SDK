@@ -29,7 +29,7 @@ This repository has few example on how to use Tactigon Gear SDK:
 ## Links
 :house: [Homepage](https://www.thetactigon.com)
 
-:notebook: [Quick start guide](https://www.thetactigon.com/tactigon-skin-quick-start-guide/)
+:notebook: [Quick start guide](https://github.com/TactigonTeam/Tactigon-Soul/wiki)
 
 :memo: [Tactigon Gear](https://pypi.org/project/tactigon-gear/)
 
