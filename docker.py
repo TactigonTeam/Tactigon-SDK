@@ -69,7 +69,7 @@ def configure_tskin(tskin_mac: str, tskin_hand: Hand) -> TSkin:
         ["up","down","push","pull","twist","circle","swipe_r","swipe_l"]
     )
 
-    tskin_cfg = TSkinConfig(tskin_mac, tskin_hand, TSKIN_NAME, gesture_config)
+    tskin_cfg = TSkinConfig(tskin_mac, tskin_hand, TSKIN_NAME, gesture_config=gesture_config)
 
     voice_cfg = VoiceConfig(
         path.join(model_folder, "models.tflite"), 
